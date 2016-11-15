@@ -1,0 +1,5 @@
+*~
+.*.swp
+.sw?
+.gitignore
+__pycache__/
