@@ -1,14 +1,11 @@
 from ctypes import *
 
-# @todo
-# glBindAttribLocation.argtypes = [GLuint, GLuint, STRING]
-# STRING = c_char_p
-# Use STRING instead of POINTER(GLchar) ?
-# c_char_p implies null-terminated string??
+_gl = CDLL('libGL.so.1')
 
 GLenum = c_uint
 GLboolean = c_ubyte
 GLbitfield = c_uint
+GLchar = c_char
 GLbyte = c_byte
 GLshort = c_short
 GLint = c_int
@@ -23,13 +20,14 @@ GLdouble = c_double
 GLclampd = c_double
 GLvoid = None
 
-ptrdiff_t = c_ulong
-
-GLchar = c_char
+# https://software.intel.com/en-us/articles/size-of-long-integer-type-on-different-architecture-and-os
+ptrdiff_t = c_long
 GLintptr = ptrdiff_t
 GLsizeiptr = ptrdiff_t
 GLint64 = c_int64
 GLuint64 = c_uint64
+
+STRING = c_char_p
 
 #GLsync = None
 # TypeError: item 1 in _argtypes_ has no from_param method
@@ -46,7 +44,4 @@ GLDEBUGPROCARB = CFUNCTYPE (None, GLenum, GLenum, GLuint, GLenum, GLsizei, STRIN
 GLDEBUGPROCAMD = CFUNCTYPE (GLuint, GLenum, GLenum, GLsizei, STRING, POINTER(GLvoid))
 # GLDEBUGPROC         = (GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar*, GLvoid*);
 GLDEBUGPROC = CFUNCTYPE (GLenum, GLenum, GLuint, GLenum, GLsizei, STRING, POINTER(GLvoid))
-
-
-_gl = CDLL('libGL.so.1')
 

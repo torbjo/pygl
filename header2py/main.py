@@ -39,12 +39,18 @@ def c_type_to_python (arg):
     #print ('XXX', type_, '\t', arg, '\t', oarg)
 
     if type_ == 'void':
-        type_ = 'None'
+        type_ = 'None'  # ctypes uses None for void
 
     if pc == 1:
-        type_ = 'POINTER(%s)' % type_
+        if type_ == 'GLchar':
+            type_ = 'STRING'
+        else:
+            type_ = 'POINTER(%s)' % type_
     elif pc == 2:
-        type_ = 'POINTER(POINTER(%s))' % type_
+        if type_ == 'GLchar':
+            type_ = 'POINTER(STRING)'
+        else:
+            type_ = 'POINTER(POINTER(%s))' % type_
     elif pc > 2:
         assert False
 
