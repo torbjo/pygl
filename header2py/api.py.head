@@ -20,8 +20,7 @@ GLdouble = c_double
 GLclampd = c_double
 GLvoid = None
 
-# https://software.intel.com/en-us/articles/size-of-long-integer-type-on-different-architecture-and-os
-ptrdiff_t = c_long
+ptrdiff_t = c_long      # assumes sizeof(ptrdiff_t) == sizeof(long)
 GLintptr = ptrdiff_t
 GLsizeiptr = ptrdiff_t
 GLint64 = c_int64
