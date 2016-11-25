@@ -1,6 +1,7 @@
 r"""
 Test against glitter (https://pypi.python.org/pypi/glitter/0.1.7). Will
 check that all symbols exists, and that their (ctypes) signature match.
+Note: glitter has no GL4 support.
 
 NOTE: glitter needs this patch to work with Python 3:
 https://gist.github.com/torbjo/c2ccc681adff2ec73b57a819d963cf5d
@@ -22,8 +23,12 @@ try:
 except:
     VERBOSE = False
 
-import api3 as api      # glitter has no gl4 support
-from glitter import raw
+import api3 as api
+try:
+    from glitter import raw
+except ImportError:
+    print ('WARNING: Skipping test; glitter not found.', file=sys.stderr)
+    exit(0)
 
 for key,val in raw.__dict__.items():
     if not key.startswith ('gl'): continue

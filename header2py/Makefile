@@ -40,7 +40,9 @@ dist-clean: clean
 	rm -f glcorearb3.h
 	rm -f glcorearb4.h
 
-# Very simple test. Just check that the files loads without errors.
+# Very simple tests. Test symbol signatures against glitter,
+# and check that the files loads without errors.
 test: api3.py api4.py
+	$(PYTHON) test.py
 	$(PYTHON) api3.py
 	$(PYTHON) api4.py
