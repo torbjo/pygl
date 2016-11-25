@@ -26,7 +26,7 @@ def output_function (name, rtype, arglist):
 def c_type_to_python (arg):
     '''Convert from C type to Python ctypes type. Note: Does not handle
     all cases, only types used in glcorearb.h'''
-#    oldarg = arg  # debug
+    oldarg = arg  # debug
     ptrcnt = arg.count('*')     # pointer indirection count
     arg = arg.replace ('*', '')
     arg = arg.replace ('const', '').strip()
@@ -37,7 +37,10 @@ def c_type_to_python (arg):
     elif nparts == 1:
         type_ = arg
     else:
-        assert False
+        if arg.startswith ('struct ') and nparts==3 and ptrcnt==1:
+            _, type_, _ = arg.split()
+        else:
+            assert False
 
     #print ('!!!', type_, '\t', arg, '\t', oldarg)
 
@@ -68,11 +71,7 @@ def parse_function (line):
     rtype = l[0:i].strip()
     rtype = c_type_to_python (rtype)
     name, args = l[i+9:].split (maxsplit=1)  # i+9 => skip APIENTRY
-    if name.endswith ('ARB'):   # tmp hack
-        return
-#    print ('# ' + name)
     arglist = [c_type_to_python(arg) for arg in args[1:-2].split(',')]
-    #do_func (name, rtype, arglist)
     return name, rtype, arglist
 
 
@@ -86,17 +85,29 @@ def parse_define (line):
 
 
 
+def output_struct (name):
+    print ('class {} (Structure):'.format (name))
+    print ('    _fields_ = ()')
+
+
+def parse_struct (line):
+    '''Parse a forward declared struct'''
+    assert line.count ('*') == 0
+    _, name = line.rstrip().rstrip(';').split()
+    return name
+
+
+
 def main (fp):
     for line in fp.readlines():
         if line.startswith ('GLAPI '):
             func = parse_function (line)
-            if func:
-                output_function (*func)
-            else:
-                print ('# XXX Skipping')
-                print ('#', line.rstrip())
+            #if 'glMemoryBarrier' in line:
+            output_function (*func)
         elif line.startswith ('#define GL_'):
             output_define (*parse_define (line))
+        elif line.startswith ('struct '):
+            output_struct (parse_struct (line))
 
 
 
