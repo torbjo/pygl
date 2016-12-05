@@ -1,4 +1,4 @@
-# This file was auto-generated on 2016-11-20T16:46:30Z from:
+# This file was auto-generated on 2016-12-05T22:15:38Z from:
 # https://www.opengl.org/registry/api/GL/glcorearb.h
 
 from ctypes import *
@@ -35,13 +35,8 @@ class __GLsync (Structure):
     _fields_ = ()
 GLsync = POINTER(__GLsync)
 
-# @todo auto-generate these?
-STRING = c_char_p
 GLDEBUGPROCARB = CFUNCTYPE (None, GLenum, GLenum, GLuint, GLenum, GLsizei, STRING, POINTER(GLvoid))
-# GLDEBUGPROCAMD = (GLuint, GLenum, GLenum, GLsizei, const GLchar*, GLvoid*);
-GLDEBUGPROCAMD = CFUNCTYPE (GLuint, GLenum, GLenum, GLsizei, STRING, POINTER(GLvoid))
-# GLDEBUGPROC         = (GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar*, GLvoid*);
-GLDEBUGPROC = CFUNCTYPE (GLenum, GLenum, GLuint, GLenum, GLsizei, STRING, POINTER(GLvoid))
+GLDEBUGPROC =    CFUNCTYPE (None, GLenum, GLenum, GLuint, GLenum, GLsizei, STRING, POINTER(GLvoid))
 
 GL_VERSION_1_0 = 1
 glCullFace = _gl.glCullFace
@@ -4023,45 +4018,83 @@ GL_ARB_arrays_of_arrays = 1
 GL_ARB_base_instance = 1
 GL_ARB_bindless_texture = 1
 GL_UNSIGNED_INT64_ARB = 0x140F
-# XXX Skipping
-# GLAPI GLuint64 APIENTRY glGetTextureHandleARB (GLuint texture);
-# XXX Skipping
-# GLAPI GLuint64 APIENTRY glGetTextureSamplerHandleARB (GLuint texture, GLuint sampler);
-# XXX Skipping
-# GLAPI void APIENTRY glMakeTextureHandleResidentARB (GLuint64 handle);
-# XXX Skipping
-# GLAPI void APIENTRY glMakeTextureHandleNonResidentARB (GLuint64 handle);
-# XXX Skipping
-# GLAPI GLuint64 APIENTRY glGetImageHandleARB (GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
-# XXX Skipping
-# GLAPI void APIENTRY glMakeImageHandleResidentARB (GLuint64 handle, GLenum access);
-# XXX Skipping
-# GLAPI void APIENTRY glMakeImageHandleNonResidentARB (GLuint64 handle);
-# XXX Skipping
-# GLAPI void APIENTRY glUniformHandleui64ARB (GLint location, GLuint64 value);
-# XXX Skipping
-# GLAPI void APIENTRY glUniformHandleui64vARB (GLint location, GLsizei count, const GLuint64 *value);
-# XXX Skipping
-# GLAPI void APIENTRY glProgramUniformHandleui64ARB (GLuint program, GLint location, GLuint64 value);
-# XXX Skipping
-# GLAPI void APIENTRY glProgramUniformHandleui64vARB (GLuint program, GLint location, GLsizei count, const GLuint64 *values);
-# XXX Skipping
-# GLAPI GLboolean APIENTRY glIsTextureHandleResidentARB (GLuint64 handle);
-# XXX Skipping
-# GLAPI GLboolean APIENTRY glIsImageHandleResidentARB (GLuint64 handle);
-# XXX Skipping
-# GLAPI void APIENTRY glVertexAttribL1ui64ARB (GLuint index, GLuint64EXT x);
-# XXX Skipping
-# GLAPI void APIENTRY glVertexAttribL1ui64vARB (GLuint index, const GLuint64EXT *v);
-# XXX Skipping
-# GLAPI void APIENTRY glGetVertexAttribLui64vARB (GLuint index, GLenum pname, GLuint64EXT *params);
+glGetTextureHandleARB = _gl.glGetTextureHandleARB
+glGetTextureHandleARB.restype = GLuint64
+glGetTextureHandleARB.argtypes = (GLuint,)
+
+glGetTextureSamplerHandleARB = _gl.glGetTextureSamplerHandleARB
+glGetTextureSamplerHandleARB.restype = GLuint64
+glGetTextureSamplerHandleARB.argtypes = (GLuint, GLuint,)
+
+glMakeTextureHandleResidentARB = _gl.glMakeTextureHandleResidentARB
+glMakeTextureHandleResidentARB.restype = None
+glMakeTextureHandleResidentARB.argtypes = (GLuint64,)
+
+glMakeTextureHandleNonResidentARB = _gl.glMakeTextureHandleNonResidentARB
+glMakeTextureHandleNonResidentARB.restype = None
+glMakeTextureHandleNonResidentARB.argtypes = (GLuint64,)
+
+glGetImageHandleARB = _gl.glGetImageHandleARB
+glGetImageHandleARB.restype = GLuint64
+glGetImageHandleARB.argtypes = (GLuint, GLint, GLboolean, GLint, GLenum,)
+
+glMakeImageHandleResidentARB = _gl.glMakeImageHandleResidentARB
+glMakeImageHandleResidentARB.restype = None
+glMakeImageHandleResidentARB.argtypes = (GLuint64, GLenum,)
+
+glMakeImageHandleNonResidentARB = _gl.glMakeImageHandleNonResidentARB
+glMakeImageHandleNonResidentARB.restype = None
+glMakeImageHandleNonResidentARB.argtypes = (GLuint64,)
+
+glUniformHandleui64ARB = _gl.glUniformHandleui64ARB
+glUniformHandleui64ARB.restype = None
+glUniformHandleui64ARB.argtypes = (GLint, GLuint64,)
+
+glUniformHandleui64vARB = _gl.glUniformHandleui64vARB
+glUniformHandleui64vARB.restype = None
+glUniformHandleui64vARB.argtypes = (GLint, GLsizei, POINTER(GLuint64),)
+
+glProgramUniformHandleui64ARB = _gl.glProgramUniformHandleui64ARB
+glProgramUniformHandleui64ARB.restype = None
+glProgramUniformHandleui64ARB.argtypes = (GLuint, GLint, GLuint64,)
+
+glProgramUniformHandleui64vARB = _gl.glProgramUniformHandleui64vARB
+glProgramUniformHandleui64vARB.restype = None
+glProgramUniformHandleui64vARB.argtypes = (GLuint, GLint, GLsizei, POINTER(GLuint64),)
+
+glIsTextureHandleResidentARB = _gl.glIsTextureHandleResidentARB
+glIsTextureHandleResidentARB.restype = GLboolean
+glIsTextureHandleResidentARB.argtypes = (GLuint64,)
+
+glIsImageHandleResidentARB = _gl.glIsImageHandleResidentARB
+glIsImageHandleResidentARB.restype = GLboolean
+glIsImageHandleResidentARB.argtypes = (GLuint64,)
+
+glVertexAttribL1ui64ARB = _gl.glVertexAttribL1ui64ARB
+glVertexAttribL1ui64ARB.restype = None
+glVertexAttribL1ui64ARB.argtypes = (GLuint, GLuint64EXT,)
+
+glVertexAttribL1ui64vARB = _gl.glVertexAttribL1ui64vARB
+glVertexAttribL1ui64vARB.restype = None
+glVertexAttribL1ui64vARB.argtypes = (GLuint, POINTER(GLuint64EXT),)
+
+glGetVertexAttribLui64vARB = _gl.glGetVertexAttribLui64vARB
+glGetVertexAttribLui64vARB.restype = None
+glGetVertexAttribLui64vARB.argtypes = (GLuint, GLenum, POINTER(GLuint64EXT),)
+
 GL_ARB_blend_func_extended = 1
 GL_ARB_buffer_storage = 1
 GL_ARB_cl_event = 1
+class _cl_context (Structure):
+    _fields_ = ()
+class _cl_event (Structure):
+    _fields_ = ()
 GL_SYNC_CL_EVENT_ARB = 0x8240
 GL_SYNC_CL_EVENT_COMPLETE_ARB = 0x8241
-# XXX Skipping
-# GLAPI GLsync APIENTRY glCreateSyncFromCLeventARB (struct _cl_context *context, struct _cl_event *event, GLbitfield flags);
+glCreateSyncFromCLeventARB = _gl.glCreateSyncFromCLeventARB
+glCreateSyncFromCLeventARB.restype = GLsync
+glCreateSyncFromCLeventARB.argtypes = (POINTER(_cl_context), POINTER(_cl_event), GLbitfield,)
+
 GL_ARB_clear_buffer_object = 1
 GL_ARB_clear_texture = 1
 GL_ARB_clip_control = 1
@@ -4072,8 +4105,10 @@ GL_MAX_COMPUTE_VARIABLE_GROUP_INVOCATIONS_ARB = 0x9344
 GL_MAX_COMPUTE_FIXED_GROUP_INVOCATIONS_ARB = 0x90EB
 GL_MAX_COMPUTE_VARIABLE_GROUP_SIZE_ARB = 0x9345
 GL_MAX_COMPUTE_FIXED_GROUP_SIZE_ARB = 0x91BF
-# XXX Skipping
-# GLAPI void APIENTRY glDispatchComputeGroupSizeARB (GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z, GLuint group_size_x, GLuint group_size_y, GLuint group_size_z);
+glDispatchComputeGroupSizeARB = _gl.glDispatchComputeGroupSizeARB
+glDispatchComputeGroupSizeARB.restype = None
+glDispatchComputeGroupSizeARB.argtypes = (GLuint, GLuint, GLuint, GLuint, GLuint, GLuint,)
+
 GL_ARB_conditional_render_inverted = 1
 GL_ARB_conservative_depth = 1
 GL_ARB_copy_buffer = 1
@@ -4102,27 +4137,43 @@ GL_DEBUG_LOGGED_MESSAGES_ARB = 0x9145
 GL_DEBUG_SEVERITY_HIGH_ARB = 0x9146
 GL_DEBUG_SEVERITY_MEDIUM_ARB = 0x9147
 GL_DEBUG_SEVERITY_LOW_ARB = 0x9148
-# XXX Skipping
-# GLAPI void APIENTRY glDebugMessageControlARB (GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
-# XXX Skipping
-# GLAPI void APIENTRY glDebugMessageInsertARB (GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf);
-# XXX Skipping
-# GLAPI void APIENTRY glDebugMessageCallbackARB (GLDEBUGPROCARB callback, const void *userParam);
-# XXX Skipping
-# GLAPI GLuint APIENTRY glGetDebugMessageLogARB (GLuint count, GLsizei bufSize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
+glDebugMessageControlARB = _gl.glDebugMessageControlARB
+glDebugMessageControlARB.restype = None
+glDebugMessageControlARB.argtypes = (GLenum, GLenum, GLenum, GLsizei, POINTER(GLuint), GLboolean,)
+
+glDebugMessageInsertARB = _gl.glDebugMessageInsertARB
+glDebugMessageInsertARB.restype = None
+glDebugMessageInsertARB.argtypes = (GLenum, GLenum, GLuint, GLenum, GLsizei, STRING,)
+
+glDebugMessageCallbackARB = _gl.glDebugMessageCallbackARB
+glDebugMessageCallbackARB.restype = None
+glDebugMessageCallbackARB.argtypes = (GLDEBUGPROCARB, POINTER(None),)
+
+glGetDebugMessageLogARB = _gl.glGetDebugMessageLogARB
+glGetDebugMessageLogARB.restype = GLuint
+glGetDebugMessageLogARB.argtypes = (GLuint, GLsizei, POINTER(GLenum), POINTER(GLenum), POINTER(GLuint), POINTER(GLenum), POINTER(GLsizei), STRING,)
+
 GL_ARB_depth_buffer_float = 1
 GL_ARB_depth_clamp = 1
 GL_ARB_derivative_control = 1
 GL_ARB_direct_state_access = 1
 GL_ARB_draw_buffers_blend = 1
-# XXX Skipping
-# GLAPI void APIENTRY glBlendEquationiARB (GLuint buf, GLenum mode);
-# XXX Skipping
-# GLAPI void APIENTRY glBlendEquationSeparateiARB (GLuint buf, GLenum modeRGB, GLenum modeAlpha);
-# XXX Skipping
-# GLAPI void APIENTRY glBlendFunciARB (GLuint buf, GLenum src, GLenum dst);
-# XXX Skipping
-# GLAPI void APIENTRY glBlendFuncSeparateiARB (GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+glBlendEquationiARB = _gl.glBlendEquationiARB
+glBlendEquationiARB.restype = None
+glBlendEquationiARB.argtypes = (GLuint, GLenum,)
+
+glBlendEquationSeparateiARB = _gl.glBlendEquationSeparateiARB
+glBlendEquationSeparateiARB.restype = None
+glBlendEquationSeparateiARB.argtypes = (GLuint, GLenum, GLenum,)
+
+glBlendFunciARB = _gl.glBlendFunciARB
+glBlendFunciARB.restype = None
+glBlendFunciARB.argtypes = (GLuint, GLenum, GLenum,)
+
+glBlendFuncSeparateiARB = _gl.glBlendFuncSeparateiARB
+glBlendFuncSeparateiARB.restype = None
+glBlendFuncSeparateiARB.argtypes = (GLuint, GLenum, GLenum, GLenum, GLenum,)
+
 GL_ARB_draw_elements_base_vertex = 1
 GL_ARB_draw_indirect = 1
 GL_ARB_enhanced_layouts = 1
@@ -4144,10 +4195,14 @@ GL_BLEND_EQUATION = 0x8009
 GL_ARB_indirect_parameters = 1
 GL_PARAMETER_BUFFER_ARB = 0x80EE
 GL_PARAMETER_BUFFER_BINDING_ARB = 0x80EF
-# XXX Skipping
-# GLAPI void APIENTRY glMultiDrawArraysIndirectCountARB (GLenum mode, GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
-# XXX Skipping
-# GLAPI void APIENTRY glMultiDrawElementsIndirectCountARB (GLenum mode, GLenum type, GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+glMultiDrawArraysIndirectCountARB = _gl.glMultiDrawArraysIndirectCountARB
+glMultiDrawArraysIndirectCountARB.restype = None
+glMultiDrawArraysIndirectCountARB.argtypes = (GLenum, GLintptr, GLintptr, GLsizei, GLsizei,)
+
+glMultiDrawElementsIndirectCountARB = _gl.glMultiDrawElementsIndirectCountARB
+glMultiDrawElementsIndirectCountARB.restype = None
+glMultiDrawElementsIndirectCountARB.argtypes = (GLenum, GLenum, GLintptr, GLintptr, GLsizei, GLsizei,)
+
 GL_ARB_internalformat_query = 1
 GL_ARB_internalformat_query2 = 1
 GL_SRGB_DECODE_ARB = 0x8299
@@ -4180,28 +4235,46 @@ GL_INNOCENT_CONTEXT_RESET_ARB = 0x8254
 GL_UNKNOWN_CONTEXT_RESET_ARB = 0x8255
 GL_RESET_NOTIFICATION_STRATEGY_ARB = 0x8256
 GL_NO_RESET_NOTIFICATION_ARB = 0x8261
-# XXX Skipping
-# GLAPI GLenum APIENTRY glGetGraphicsResetStatusARB (void);
-# XXX Skipping
-# GLAPI void APIENTRY glGetnTexImageARB (GLenum target, GLint level, GLenum format, GLenum type, GLsizei bufSize, void *img);
-# XXX Skipping
-# GLAPI void APIENTRY glReadnPixelsARB (GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void *data);
-# XXX Skipping
-# GLAPI void APIENTRY glGetnCompressedTexImageARB (GLenum target, GLint lod, GLsizei bufSize, void *img);
-# XXX Skipping
-# GLAPI void APIENTRY glGetnUniformfvARB (GLuint program, GLint location, GLsizei bufSize, GLfloat *params);
-# XXX Skipping
-# GLAPI void APIENTRY glGetnUniformivARB (GLuint program, GLint location, GLsizei bufSize, GLint *params);
-# XXX Skipping
-# GLAPI void APIENTRY glGetnUniformuivARB (GLuint program, GLint location, GLsizei bufSize, GLuint *params);
-# XXX Skipping
-# GLAPI void APIENTRY glGetnUniformdvARB (GLuint program, GLint location, GLsizei bufSize, GLdouble *params);
+glGetGraphicsResetStatusARB = _gl.glGetGraphicsResetStatusARB
+glGetGraphicsResetStatusARB.restype = GLenum
+glGetGraphicsResetStatusARB.argtypes = ()
+
+glGetnTexImageARB = _gl.glGetnTexImageARB
+glGetnTexImageARB.restype = None
+glGetnTexImageARB.argtypes = (GLenum, GLint, GLenum, GLenum, GLsizei, POINTER(None),)
+
+glReadnPixelsARB = _gl.glReadnPixelsARB
+glReadnPixelsARB.restype = None
+glReadnPixelsARB.argtypes = (GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, POINTER(None),)
+
+glGetnCompressedTexImageARB = _gl.glGetnCompressedTexImageARB
+glGetnCompressedTexImageARB.restype = None
+glGetnCompressedTexImageARB.argtypes = (GLenum, GLint, GLsizei, POINTER(None),)
+
+glGetnUniformfvARB = _gl.glGetnUniformfvARB
+glGetnUniformfvARB.restype = None
+glGetnUniformfvARB.argtypes = (GLuint, GLint, GLsizei, POINTER(GLfloat),)
+
+glGetnUniformivARB = _gl.glGetnUniformivARB
+glGetnUniformivARB.restype = None
+glGetnUniformivARB.argtypes = (GLuint, GLint, GLsizei, POINTER(GLint),)
+
+glGetnUniformuivARB = _gl.glGetnUniformuivARB
+glGetnUniformuivARB.restype = None
+glGetnUniformuivARB.argtypes = (GLuint, GLint, GLsizei, POINTER(GLuint),)
+
+glGetnUniformdvARB = _gl.glGetnUniformdvARB
+glGetnUniformdvARB.restype = None
+glGetnUniformdvARB.argtypes = (GLuint, GLint, GLsizei, POINTER(GLdouble),)
+
 GL_ARB_robustness_isolation = 1
 GL_ARB_sample_shading = 1
 GL_SAMPLE_SHADING_ARB = 0x8C36
 GL_MIN_SAMPLE_SHADING_VALUE_ARB = 0x8C37
-# XXX Skipping
-# GLAPI void APIENTRY glMinSampleShadingARB (GLfloat value);
+glMinSampleShadingARB = _gl.glMinSampleShadingARB
+glMinSampleShadingARB.restype = None
+glMinSampleShadingARB.argtypes = (GLfloat,)
+
 GL_ARB_sampler_objects = 1
 GL_ARB_seamless_cube_map = 1
 GL_ARB_seamless_cubemap_per_texture = 1
@@ -4222,30 +4295,46 @@ GL_ARB_shading_language_include = 1
 GL_SHADER_INCLUDE_ARB = 0x8DAE
 GL_NAMED_STRING_LENGTH_ARB = 0x8DE9
 GL_NAMED_STRING_TYPE_ARB = 0x8DEA
-# XXX Skipping
-# GLAPI void APIENTRY glNamedStringARB (GLenum type, GLint namelen, const GLchar *name, GLint stringlen, const GLchar *string);
-# XXX Skipping
-# GLAPI void APIENTRY glDeleteNamedStringARB (GLint namelen, const GLchar *name);
-# XXX Skipping
-# GLAPI void APIENTRY glCompileShaderIncludeARB (GLuint shader, GLsizei count, const GLchar *const*path, const GLint *length);
-# XXX Skipping
-# GLAPI GLboolean APIENTRY glIsNamedStringARB (GLint namelen, const GLchar *name);
-# XXX Skipping
-# GLAPI void APIENTRY glGetNamedStringARB (GLint namelen, const GLchar *name, GLsizei bufSize, GLint *stringlen, GLchar *string);
-# XXX Skipping
-# GLAPI void APIENTRY glGetNamedStringivARB (GLint namelen, const GLchar *name, GLenum pname, GLint *params);
+glNamedStringARB = _gl.glNamedStringARB
+glNamedStringARB.restype = None
+glNamedStringARB.argtypes = (GLenum, GLint, STRING, GLint, STRING,)
+
+glDeleteNamedStringARB = _gl.glDeleteNamedStringARB
+glDeleteNamedStringARB.restype = None
+glDeleteNamedStringARB.argtypes = (GLint, STRING,)
+
+glCompileShaderIncludeARB = _gl.glCompileShaderIncludeARB
+glCompileShaderIncludeARB.restype = None
+glCompileShaderIncludeARB.argtypes = (GLuint, GLsizei, POINTER(STRING), POINTER(GLint),)
+
+glIsNamedStringARB = _gl.glIsNamedStringARB
+glIsNamedStringARB.restype = GLboolean
+glIsNamedStringARB.argtypes = (GLint, STRING,)
+
+glGetNamedStringARB = _gl.glGetNamedStringARB
+glGetNamedStringARB.restype = None
+glGetNamedStringARB.argtypes = (GLint, STRING, GLsizei, POINTER(GLint), STRING,)
+
+glGetNamedStringivARB = _gl.glGetNamedStringivARB
+glGetNamedStringivARB.restype = None
+glGetNamedStringivARB.argtypes = (GLint, STRING, GLenum, POINTER(GLint),)
+
 GL_ARB_shading_language_packing = 1
 GL_ARB_sparse_buffer = 1
 GL_SPARSE_STORAGE_BIT_ARB = 0x0400
 GL_SPARSE_BUFFER_PAGE_SIZE_ARB = 0x82F8
-# XXX Skipping
-# GLAPI void APIENTRY glBufferPageCommitmentARB (GLenum target, GLintptr offset, GLsizeiptr size, GLboolean commit);
+glBufferPageCommitmentARB = _gl.glBufferPageCommitmentARB
+glBufferPageCommitmentARB.restype = None
+glBufferPageCommitmentARB.argtypes = (GLenum, GLintptr, GLsizeiptr, GLboolean,)
+
 glNamedBufferPageCommitmentEXT = _gl.glNamedBufferPageCommitmentEXT
 glNamedBufferPageCommitmentEXT.restype = None
 glNamedBufferPageCommitmentEXT.argtypes = (GLuint, GLintptr, GLsizeiptr, GLboolean,)
 
-# XXX Skipping
-# GLAPI void APIENTRY glNamedBufferPageCommitmentARB (GLuint buffer, GLintptr offset, GLsizeiptr size, GLboolean commit);
+glNamedBufferPageCommitmentARB = _gl.glNamedBufferPageCommitmentARB
+glNamedBufferPageCommitmentARB.restype = None
+glNamedBufferPageCommitmentARB.argtypes = (GLuint, GLintptr, GLsizeiptr, GLboolean,)
+
 GL_ARB_sparse_texture = 1
 GL_TEXTURE_SPARSE_ARB = 0x91A6
 GL_VIRTUAL_PAGE_SIZE_INDEX_ARB = 0x91A7
@@ -4258,8 +4347,10 @@ GL_MAX_SPARSE_TEXTURE_SIZE_ARB = 0x9198
 GL_MAX_SPARSE_3D_TEXTURE_SIZE_ARB = 0x9199
 GL_MAX_SPARSE_ARRAY_TEXTURE_LAYERS_ARB = 0x919A
 GL_SPARSE_TEXTURE_FULL_ARRAY_CUBE_MIPMAPS_ARB = 0x91A9
-# XXX Skipping
-# GLAPI void APIENTRY glTexPageCommitmentARB (GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
+glTexPageCommitmentARB = _gl.glTexPageCommitmentARB
+glTexPageCommitmentARB.restype = None
+glTexPageCommitmentARB.argtypes = (GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLboolean,)
+
 GL_ARB_stencil_texturing = 1
 GL_ARB_sync = 1
 GL_ARB_tessellation_shader = 1
