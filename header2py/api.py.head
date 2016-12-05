@@ -32,11 +32,6 @@ class __GLsync (Structure):
     _fields_ = ()
 GLsync = POINTER(__GLsync)
 
-# @todo auto-generate these?
-STRING = c_char_p
 GLDEBUGPROCARB = CFUNCTYPE (None, GLenum, GLenum, GLuint, GLenum, GLsizei, STRING, POINTER(GLvoid))
-# GLDEBUGPROCAMD = (GLuint, GLenum, GLenum, GLsizei, const GLchar*, GLvoid*);
-GLDEBUGPROCAMD = CFUNCTYPE (GLuint, GLenum, GLenum, GLsizei, STRING, POINTER(GLvoid))
-# GLDEBUGPROC         = (GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar*, GLvoid*);
-GLDEBUGPROC = CFUNCTYPE (GLenum, GLenum, GLuint, GLenum, GLsizei, STRING, POINTER(GLvoid))
+GLDEBUGPROC =    CFUNCTYPE (None, GLenum, GLenum, GLuint, GLenum, GLsizei, STRING, POINTER(GLvoid))
 
